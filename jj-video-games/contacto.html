@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contacto | JJ Video Games</title>
+    <link rel="stylesheet" href="css/estilos.css">
+</head>
+<body>
+    <header class="header">
+        <a href="index.html" class="logo">JJ Video Games</a>
+
+        <input type="checkbox" id="btnMenu" class="check-menu" aria-label="Abrir o cerrar el menú">
+        <label for="btnMenu" class="hamburguesa">
+            <span></span>
+            <span></span>
+            <span></span>
+        </label>
+
+        <nav>
+            <ul class="menu">
+                <li><a href="index.html">Inicio</a></li>
+                <li><a href="nosotros.html">Nosotros</a></li>
+                <li><a href="servicios.html">Servicios</a></li>
+                <li><a href="contacto.html">Contacto</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+
+        <section class="contenedor">
+            <h1>Contacto</h1>
+            <div class="contacto">
+                <form action="#" method="post">
+                    <label for="nombre">Nombre:</label>
+                    <input type="text" id="nombre" name="nombre" required>
+
+                    <label for="correo">Correo electrónico:</label>
+                    <input type="email" id="correo" name="correo" required>
+
+                    <label for="mensaje">Mensaje:</label>
+                    <textarea id="mensaje" name="mensaje" rows="5" required></textarea>
+
+                    <button type="submit" class="boton">Enviar</button>
+                </form>
+
+                <aside class="info">
+                    <h2>Visítanos</h2>
+                    <p><strong>Horario</strong><br>Lunes a sábado: 10:00 a. m. a 7:00 p. m.</p>
+                    <p><strong>Teléfono</strong><br>2222-2222</p>
+                    <p><strong>Correo</strong><br>info@jjvideogames.com</p>
+                </aside>
+            </div>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <div>
+            <p><strong>JJ Video Games</strong></p>
+            <p>Teléfono: 2222-2222 | Correo: info@jjvideogames.com</p>
+        </div>
+        <ul class="redes">
+            <li><a href="https://www.facebook.com/" target="_blank">Facebook</a></li>
+            <li><a href="https://www.instagram.com/" target="_blank">Instagram</a></li>
+        </ul>
+        <p>&copy; 2026 JJ Video Games.</p>
+    </footer>
+</body>
+</html>

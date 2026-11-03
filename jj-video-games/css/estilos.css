@@ -1,0 +1,343 @@
+/* Reset CSS */
+
+*{
+    box-sizing: border-box;
+}
+
+/* Paleta y tipografía */
+
+:root{
+    --color-principal: #7c3aed;
+    --color-secundario: #22d3ee;
+    --color-fondo: #0f0f1a;
+    --color-tarjeta: #1b1b2f;
+    --color-texto: #e8e8f4;
+    --color-suave: #a9a9c4;
+    --fuente-titulos: 'Trebuchet MS', Arial, sans-serif;
+    --fuente-texto: Arial, Helvetica, sans-serif;
+    --ancho-max: 1140px;
+}
+
+body{
+    margin: 0;
+    font-family: var(--fuente-texto);
+    line-height: 1.6;
+    color: var(--color-texto);
+    background-color: var(--color-fondo);
+}
+
+img{
+    max-width: 100%;
+    height: auto;
+    display: block;
+}
+
+h1, h2, h3{
+    font-family: var(--fuente-titulos);
+}
+
+h1{ font-size: 1.8rem; margin: 0 0 1rem; }
+h2{ font-size: 1.4rem; margin: 0 0 1rem; }
+h3{ font-size: 1.1rem; margin: 1rem 0 0.5rem; }
+
+.contenedor{
+    width: 100%;
+    max-width: var(--ancho-max);
+    margin: 0 auto;
+    padding: 2rem 1rem;
+}
+
+/* Header */
+
+.header{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem;
+    background-color: var(--color-tarjeta);
+    border-bottom: 3px solid var(--color-principal);
+}
+
+.logo{
+    font-family: var(--fuente-titulos);
+    font-size: 1.3rem;
+    font-weight: bold;
+    color: var(--color-secundario);
+    text-decoration: none;
+}
+
+.header nav{
+    width: 100%;
+}
+
+/* base: celular, el menú está oculto y lo abre la hamburguesa */
+.menu{
+    display: none;
+    flex-direction: column;
+    gap: 1rem;
+    list-style: none;
+    margin: 0;
+    padding: 1rem 0 0;
+}
+
+/* Si el checkbox está marcado, se muestra el menú */
+.check-menu:checked ~ nav .menu{
+    display: flex;
+}
+
+.menu a{
+    color: var(--color-texto);
+    text-decoration: none;
+}
+
+.menu a:hover{
+    color: var(--color-secundario);
+}
+
+/* El checkbox se oculta, pero sigue funcionando */
+.check-menu{
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    opacity: 0;
+}
+
+.check-menu:focus + .hamburguesa{
+    outline: 2px solid var(--color-secundario);
+}
+
+.hamburguesa{
+    display: flex;
+    flex-direction: column;
+    gap: 0.3rem;
+    padding: 0.5rem;
+    cursor: pointer;
+}
+
+.hamburguesa span{
+    display: block;
+    width: 26px;
+    height: 3px;
+    background-color: var(--color-secundario);
+    border-radius: 2px;
+}
+
+/* Portada */
+
+.portada{
+    text-align: center;
+    background-color: #2a1561;
+    border-bottom: 4px solid var(--color-secundario);
+}
+
+.portada .contenedor{
+    padding: 4rem 1rem;
+}
+
+.portada h1{
+    font-size: 1.8rem;
+    color: #fff;
+}
+
+.boton{
+    display: inline-block;
+    padding: 0.5rem 1rem;
+    background-color: var(--color-secundario);
+    color: #0f0f1a;
+    text-decoration: none;
+    border: none;
+    border-radius: 5px;
+    font-size: 1rem;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+/* Cards con wrap */
+
+.cards{
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+}
+
+.tarjeta{
+    width: 100%;
+    background-color: var(--color-tarjeta);
+    border-radius: 8px;
+    overflow: hidden;
+    transition: transform .2s;
+}
+
+.tarjeta:hover{
+    transform: translateY(-4px);
+}
+
+.tarjeta img{
+    width: 100%;
+    height: 260px;
+    object-fit: contain;
+    background-color: var(--color-fondo);
+}
+
+.tarjeta h3,
+.tarjeta p{
+    padding: 0 1rem;
+}
+
+.tarjeta h3:first-child{
+    margin-top: 1rem;
+}
+
+.tarjeta p{
+    margin: 0 0 1rem;
+    color: var(--color-suave);
+}
+
+.tarjeta .boton{
+    margin: 0 1rem 1rem;
+}
+
+/* Accordion */
+
+.accordion{
+    max-width: 700px;
+}
+
+.accordion .titulo{
+    display: block;
+    list-style: none;
+    padding: 1rem;
+    font-size: 1rem;
+    background-color: var(--color-tarjeta);
+    border-bottom: 1px solid #3a3a5c;
+    cursor: pointer;
+}
+
+.accordion .titulo::after{
+    content: "+";
+    float: right;
+    color: var(--color-secundario);
+}
+
+.accordion .item[open] .titulo::after{
+    content: "−";
+}
+
+.accordion .contenido{
+    padding: 0 1rem;
+}
+
+/* Galería */
+
+.fotos{
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+}
+
+.fotos img{
+    width: 100%;
+    height: 260px;
+    object-fit: contain;
+    background-color: var(--color-tarjeta);
+    border-radius: 8px;
+}
+
+/* Contacto */
+
+.contacto{
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+}
+
+form label{
+    display: block;
+    margin-bottom: 0.3rem;
+}
+
+form input,
+form textarea{
+    display: block;
+    width: 100%;
+    margin-bottom: 1rem;
+    padding: 0.7rem;
+    font-size: 1rem;
+    font-family: var(--fuente-texto);
+    color: var(--color-texto);
+    background-color: var(--color-tarjeta);
+    border: 1px solid #3a3a5c;
+    border-radius: 5px;
+}
+
+.info{
+    padding: 1rem;
+    background-color: var(--color-tarjeta);
+    border-left: 4px solid var(--color-principal);
+}
+
+/* Footer */
+
+.footer{
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    padding: 2rem 1rem;
+    background-color: var(--color-tarjeta);
+    border-top: 3px solid var(--color-principal);
+    text-align: center;
+}
+
+.footer p{
+    margin: 0.2rem 0;
+}
+
+.footer a{
+    color: var(--color-secundario);
+    text-decoration: none;
+}
+
+.redes{
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+/* Mobile first: de menor a mayor */
+
+@media (min-width: 501px){
+    h1{ font-size: 2.1rem; }
+    .portada h1{ font-size: 2.1rem; }
+}
+
+@media (min-width: 701px){
+    .tarjeta{ width: calc(50% - .5rem); }
+    .fotos img{ width: calc(50% - .5rem); }
+    .contacto{ flex-direction: row; }
+    .contacto form{ flex: 2; }
+    .contacto .info{ flex: 1; align-self: flex-start; }
+    .footer{
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: center;
+        text-align: left;
+    }
+}
+
+@media (min-width: 991px){
+    .tarjeta{ width: calc(33.333% - .67rem); }
+    .fotos img{ width: calc(33.333% - .67rem); }
+    .header nav{ width: auto; }
+    .menu{
+        display: flex;
+        flex-direction: row;
+        padding: 0;
+    }
+    .hamburguesa{ display: none; }
+    .check-menu{ display: none; }
+    .portada h1{ font-size: 2.6rem; }
+}
