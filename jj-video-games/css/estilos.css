@@ -51,7 +51,7 @@ h3{ font-size: 1.1rem; margin: 1rem 0 0.5rem; }
 
 .header{
     display: flex;
-    flex-wrap: wrap;
+    flex-wrap: wrap;               /* el menú abierto baja a otra línea */
     justify-content: space-between;
     align-items: center;
     padding: 1rem;
@@ -67,51 +67,15 @@ h3{ font-size: 1.1rem; margin: 1rem 0 0.5rem; }
     text-decoration: none;
 }
 
-.header nav{
-    width: 100%;
-}
-
-/* base: celular, el menú está oculto y lo abre la hamburguesa */
-.menu{
-    display: none;
-    flex-direction: column;
-    gap: 1rem;
-    list-style: none;
-    margin: 0;
-    padding: 1rem 0 0;
-}
-
-/* Si el checkbox está marcado, se muestra el menú */
-.check-menu:checked ~ nav .menu{
-    display: flex;
-}
-
-.menu a{
-    color: var(--color-texto);
-    text-decoration: none;
-}
-
-.menu a:hover{
-    color: var(--color-secundario);
-}
-
-/* El checkbox se oculta, pero sigue funcionando */
-.check-menu{
-    position: absolute;
-    width: 1px;
-    height: 1px;
-    opacity: 0;
-}
-
-.check-menu:focus + .hamburguesa{
-    outline: 2px solid var(--color-secundario);
-}
+/* Botón hamburguesa */
 
 .hamburguesa{
     display: flex;
     flex-direction: column;
-    gap: 0.3rem;
+    gap: 5px;
     padding: 0.5rem;
+    background: none;
+    border: 0;
     cursor: pointer;
 }
 
@@ -121,6 +85,41 @@ h3{ font-size: 1.1rem; margin: 1rem 0 0.5rem; }
     height: 3px;
     background-color: var(--color-secundario);
     border-radius: 2px;
+    transition: transform .2s, opacity .2s;
+}
+
+/* Cuando el botón tiene la clase "activo", las rayitas forman una X */
+.hamburguesa.activo span:nth-child(1){ transform: translateY(8px) rotate(45deg); }
+.hamburguesa.activo span:nth-child(2){ opacity: 0; }
+.hamburguesa.activo span:nth-child(3){ transform: translateY(-8px) rotate(-45deg); }
+
+/* Menú: en celular está oculto y se muestra con la clase "abierto" */
+
+.menu{
+    display: none;
+    width: 100%;
+}
+
+.menu.abierto{
+    display: block;
+}
+
+.menu ul{
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    list-style: none;
+    margin: 0;
+    padding: 1rem 0 0;
+}
+
+.menu a{
+    color: var(--color-texto);
+    text-decoration: none;
+}
+
+.menu a:hover{
+    color: var(--color-secundario);
 }
 
 /* Portada */
@@ -198,34 +197,43 @@ h3{ font-size: 1.1rem; margin: 1rem 0 0.5rem; }
     margin: 0 1rem 1rem;
 }
 
-/* Accordion */
+/* Accordion: el contenido se oculta y se muestra con la clase "activo" */
 
 .accordion{
     max-width: 700px;
 }
 
 .accordion .titulo{
-    display: block;
-    list-style: none;
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
     padding: 1rem;
     font-size: 1rem;
+    font-family: var(--fuente-texto);
+    text-align: left;
+    color: var(--color-texto);
     background-color: var(--color-tarjeta);
+    border: 0;
     border-bottom: 1px solid #3a3a5c;
     cursor: pointer;
 }
 
 .accordion .titulo::after{
     content: "+";
-    float: right;
     color: var(--color-secundario);
 }
 
-.accordion .item[open] .titulo::after{
+.accordion .item.activo .titulo::after{
     content: "−";
 }
 
 .accordion .contenido{
+    display: none;
     padding: 0 1rem;
+}
+
+.accordion .item.activo .contenido{
+    display: block;
 }
 
 /* Galería */
@@ -269,6 +277,12 @@ form textarea{
     background-color: var(--color-tarjeta);
     border: 1px solid #3a3a5c;
     border-radius: 5px;
+}
+
+/* Errores que escribe main.js */
+#mensajes{
+    margin: 1rem 0 0;
+    color: #ff6b81;
 }
 
 .info{
@@ -331,13 +345,10 @@ form textarea{
 @media (min-width: 991px){
     .tarjeta{ width: calc(33.333% - .67rem); }
     .fotos img{ width: calc(33.333% - .67rem); }
-    .header nav{ width: auto; }
-    .menu{
-        display: flex;
-        flex-direction: row;
-        padding: 0;
-    }
-    .hamburguesa{ display: none; }
-    .check-menu{ display: none; }
     .portada h1{ font-size: 2.6rem; }
+
+    /* menú normal en pantalla grande: siempre visible, en fila */
+    .menu{ display: block; width: auto; }
+    .menu ul{ flex-direction: row; padding: 0; }
+    .hamburguesa{ display: none; }
 }
